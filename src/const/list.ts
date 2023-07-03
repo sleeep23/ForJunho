@@ -1,6 +1,7 @@
 export const p_list = [
   { value: "김윤호", label: "김윤호" },
   { value: "김준호", label: "김준호" },
+  { value: "변성준", label: "변성준" },
   { value: "서동호", label: "서동호" },
   { value: "서희진", label: "서희진" },
   { value: "손준오", label: "손준오" },
