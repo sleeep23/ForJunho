@@ -1,4 +1,5 @@
 import {
+  ActionIcon,
   Button,
   Container,
   Group,
@@ -7,6 +8,7 @@ import {
   Stack,
   Text,
 } from "@mantine/core";
+import { IconX } from "@tabler/icons-react";
 import { useViewportSize } from "@mantine/hooks";
 import { p_list } from "./const/list.ts";
 import { useState } from "react";
@@ -38,7 +40,21 @@ function App() {
             <Text component="h2">체크 된 사람 목록 ✅</Text>
             <List>
               {names.map((name) => (
-                <List.Item key={name}>{name}</List.Item>
+                <List.Item key={name}>
+                  <Group>
+                    <Text>{name}</Text>
+                    <ActionIcon
+                      variant="subtle"
+                      color="red"
+                      onClick={() => {
+                        setNames((p) => p.filter((i) => i !== name));
+                        setValues([]);
+                      }}
+                    >
+                      <IconX size="1rem" />
+                    </ActionIcon>
+                  </Group>
+                </List.Item>
               ))}
             </List>
           </Stack>
