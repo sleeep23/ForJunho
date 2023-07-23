@@ -9,13 +9,16 @@ import {
   Text,
 } from "@mantine/core";
 import { IconX } from "@tabler/icons-react";
-import { useViewportSize } from "@mantine/hooks";
+import { useLocalStorage, useViewportSize } from "@mantine/hooks";
 import { p_list } from "./const/list.ts";
 import { useState } from "react";
 
 function App() {
   const { height } = useViewportSize();
-  const [names, setNames] = useState<string[]>([]);
+  const [names, setNames] = useLocalStorage<string[]>({
+    key: "names",
+    defaultValue: [],
+  });
   const [values, setValues] = useState<string[]>([]);
   return (
     <>
@@ -28,9 +31,10 @@ function App() {
               data={p_list.filter((item) => !names.includes(item.value))}
               value={values}
               onChange={setValues}
+              searchable
               placeholder="은밀한 수집가 준호씨의 그 분을 고르세요"
             />
-            {names.length === 20 ? (
+            {names.length === 21 ? (
               <Text>그만 모아... 다 모았어... 🥲</Text>
             ) : (
               <Text>아직 몇발 남았다... 🤲</Text>
